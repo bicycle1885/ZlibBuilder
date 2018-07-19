@@ -23,7 +23,7 @@ fi
 ./configure ${EXTRA_CONFIGURE_FLAGS} --prefix=${prefix}
 make install ${EXTRA_MAKE_FLAGS} -j${nproc}
 
-# See https://github.com/JuliaDiffEq/SundialsBuilder/blob/a292690199bb5b99cd7ec3f952a58f621c9b3f97/build_tarballs.jl#L62-L68.
+# Taken from https://github.com/JuliaDiffEq/SundialsBuilder/blob/a292690199bb5b99cd7ec3f952a58f621c9b3f97/build_tarballs.jl#L62-L68.
 # On windows, move all `.dll` files to `bin`. We don't want to follow symlinks
 # because non-administrative users cannot create symlinks on Windows, so we
 # use `cp -L` followed by `rm` instead of just `mv`.
