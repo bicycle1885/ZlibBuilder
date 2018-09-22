@@ -1,31 +1,34 @@
 language: julia
 os:
-  - linux
+- linux
 julia:
-  - 0.7
+- 1.0
 notifications:
   email: false
 git:
   depth: 99999999
 cache:
   directories:
-    - downloads
+  - downloads
 env:
   global:
-    - BINARYBUILDER_DOWNLOADS_CACHE=downloads
-    - BINARYBUILDER_AUTOMATIC_APPLE=true
+  - BINARYBUILDER_DOWNLOADS_CACHE=downloads
+  - BINARYBUILDER_AUTOMATIC_APPLE=true
 sudo: required
 before_script:
-  - julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/JuliaPackaging/BinaryBuilder.jl", rev="master"))'
+- julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/JuliaPackaging/BinaryBuilder.jl",
+  rev="master"))'
+- julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/JuliaPackaging/BinaryProvider.jl",
+  rev="master"))'
 script:
-  - julia build_tarballs.jl
+- julia build_tarballs.jl
 deploy:
   provider: releases
   api_key:
-    secure: kJwv2FWpS5VXDNDp/R4LdIaOiIaNnAUKy86xiBTB2JK2JdVeSK+3pgdYfuZG4ebqKgyuvOMRGeKwP19jhhJazu3vHaOz6QK4cB6b5teTgL0HNhiRTAFRMu0jPM15uLbFNykuEcaIagw6hVgnwH/1VM+D23yJJ7MMyYbVGZdEx+MpMKYOoju8qY/SAwb1q+uJauwYBT1B4HpedasZNlDLJWaZyzvfsJCnWTSBUuRYuqjqTRJ7jdMh5JL5xUkJ8Mjj1J4sbymbAHEYDcInS9cWK4tSgYBbiif0sGIaN8UWZ/z0uOSrjVE7Aen8xaeHDvaxIKDJX1duo4cwkoAJixaMV+xF2ce8T6pCwZOJoirgeD5Voj4ifUCMf1XLncG0FQwzGPIiSv3VE9wm2/AowZU65VXluE9f7zxgsqJ/aqAEmVtsH59rADiwpP5sCabFze/aP6DhR4zN3DHD2pwOSz10+6eBRnuy9yL1u9nSflNkt6x/INn5Yy1rnSqukb+UdmuZywRMHsr4R/zTi3X/lzNP49HUigZ77Z2MmThx9ClqewTKG4kBB5ACIbnghlfKjipsHa+hopOoqeFVhCWlBIO9KOJWEHe/7Py7lIcb4jpVYZIw52Cq19iifdc3GTPbc/XRrTiZfDHXc7MhKTpGiYvVMQHP2huz4krfDYvBn4zkhuc=
+    secure: AEQuaXMhuB24B3c71pCRuU8wTVJTohgdSw+mIXEiPxil7QDq6NrjvwS1/TQ7z+SycS5KWBICrApeeymIPNQRvmjWKNkDMiQASqXRiap8ulXqAiCYZkK6hkPSESkZuh9kpH64f39p2Kc/upGXEiymJkU1sPpkqgu6wnQ3GDlFLLzw0c/Sng+Vx5X1h/JGikNsbt5iMbIrp8m/hx2kWLKIWfqN1gY1d4s1BEYmH88Pd8ep97mi9nO+M9ilc67JzgHPtgo3PGuO3H9Zfcb5ZyeZMkbsRMgnaDHhbM8S9/3h9/RuKtGO8Sa0I+oz5c+d0NIWzH9F/9M3E6fGNmJz9tz9Thc0C/sLDtx52vpfOn/KDY9PnenlMeem9FITf3BlpjG9owFtHzsb+/6vQI2Vm9G6otjPt4KZRmgFJAjf9ADxQ7Q9FwwAdyIWTAkllHDmi35zY4E9e0Fsrc9gIs62Y9RNnfwY8tHMAqvkVYxLsWDqWwtkUlNx5BVaAWt9Kr2jQS0ntyEKLlDctyUO8KqBPtrLwSuri0MtKY2FTRBhDO8YQ6XdfItLbHnHyBbkNCYIzy43UCbFIu2u0DF8fY+3kdXiRgT1q5bpUEiKypibovs7J15KzgrhxVFxTDgOd28jXyiDOhniRnQ0GmhjUKY9rHbqMPMNSBZckwp41k7KKO3Z82M=
   file_glob: true
   file: products/*
   skip_cleanup: true
   on:
-    repo: bicycle1885/ZlibBuilder
+    repo: jstrube/ZlibBuilder
     tags: true
