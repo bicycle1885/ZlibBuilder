@@ -33,6 +33,7 @@ fi
 
 # Build for ALL THE PLATFORMS!
 platforms = supported_platforms()
+platforms = expand_gcc_versions(platforms)
 
 # The products that we will ensure are always built
 products = prefix -> [
