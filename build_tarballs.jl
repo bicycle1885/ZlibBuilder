@@ -33,6 +33,7 @@ platforms = supported_platforms()
 
 # The products that we will ensure are always built
 products = prefix -> [
+    ExecutableProduct(prefix, "zlib", :zlib),
     LibraryProduct(prefix, "libz", :libz),
 ]
 
