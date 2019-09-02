@@ -1,3 +1,5 @@
+**NOTICE**: This repository has been moved to https://github.com/JuliaPackaging/Yggdrasil, and therefore is no longer actively maintained here. 
+
 # ZlibBuilder
 
 [![Build Status](https://travis-ci.org/bicycle1885/ZlibBuilder.svg?branch=master)](https://travis-ci.org/bicycle1885/ZlibBuilder)
